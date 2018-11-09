@@ -15,7 +15,15 @@ World::World(int _X, int _Y, int _brickSize)
     W = brickSize * X;
     H = brickSize * (Y+1); // +1 for status_bar
 
+    timer = 0.0f;
+    delay = 0.1f;
 
+    if (!music.openFromFile("res/true.ogg")) exit(1);
+    music.setLoop(true);
+    music.setVolume(30);
+
+    if (!tex.loadFromFile("res/brick.png")) exit(1);
+    brick.setTexture(tex);
 }
 
 void World::draw(RenderTarget &target, RenderStates states) const
@@ -30,5 +38,30 @@ void World::draw(RenderTarget &target, RenderStates states) const
 
 void World::start()
 {
-    ;
+    RenderWindow window(VideoMode(X*brickSize, (Y+1)*brickSize), "Snejk!");
+    window.setFramerateLimit(60);
+
+    //Fruit fruit(X, Y);
+    //Snake snake(X, Y, 3);
+    //Status_bas sbar(X, Y);
+
+    music.play();
+
+    while (window.isOpen())
+    {
+        timer += clock.getElapsedTime().asSeconds();
+        clock.restart();
+
+        Event e;
+        while (window.pollEvent(e))
+        {
+            if (e.type == Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(*this);
+        window.display();
+    }
+
 }

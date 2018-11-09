@@ -19,7 +19,7 @@ class World : public sf::Drawable
         Music music;
         Clock clock;
 
-        float time, timer, delay;
+        float timer, delay;
         bool growing;
 
         void draw(RenderTarget &target, RenderStates states) const override;
