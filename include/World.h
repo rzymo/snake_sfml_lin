@@ -11,7 +11,6 @@ class World : public sf::Drawable
     private:
         int brickSize;
         int X, Y; // game field (in bricks)
-        int W, H; // game field (inx pixels)
 
         Texture tex;
         mutable Sprite brick;
