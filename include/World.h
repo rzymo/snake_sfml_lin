@@ -20,7 +20,6 @@ class World : public sf::Drawable
         Clock clock;
 
         float timer, delay;
-        bool growing;
 
         void draw(RenderTarget &target, RenderStates states) const override;
 

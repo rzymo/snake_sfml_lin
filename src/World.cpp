@@ -1,7 +1,7 @@
 #include "World.h"
-//#include "fruit.h"
-//#include "snake.h"
-//#include "status_bar.h"
+#include "Fruit.h"
+//#include "Snake.h"
+//#include "StatusBar.h"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 
@@ -12,8 +12,6 @@ World::World(int _X, int _Y, int _brickSize)
     brickSize = _brickSize;
     X = _X;
     Y = _Y;
-    W = brickSize * X;
-    H = brickSize * (Y+1); // +1 for status_bar
 
     timer = 0.0f;
     delay = 0.1f;
@@ -41,11 +39,11 @@ void World::start()
     RenderWindow window(VideoMode(X*brickSize, (Y+1)*brickSize), "Snejk!");
     window.setFramerateLimit(60);
 
-    //Fruit fruit(X, Y);
+    Fruit fruit(X, Y);
     //Snake snake(X, Y, 3);
-    //Status_bas sbar(X, Y);
+    //StatusBar sbar(X, Y);
 
-    music.play();
+    music.play();   // background music
 
     while (window.isOpen())
     {
@@ -61,6 +59,7 @@ void World::start()
 
         window.clear();
         window.draw(*this);
+        window.draw(fruit);
         window.display();
     }
 

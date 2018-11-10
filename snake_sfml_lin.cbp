@@ -41,8 +41,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Fruit.h" />
 		<Unit filename="include/World.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Fruit.cpp" />
 		<Unit filename="src/World.cpp" />
 		<Extensions>
 			<code_completion />
